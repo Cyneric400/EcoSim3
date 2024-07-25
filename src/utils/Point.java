@@ -23,9 +23,9 @@ public class Point {
         int tY = this.getY();
         int oX = op.getX();
         int oY = op.getY();
-        if (tY > oY || ((tY == oY) && (tX > oX))) {
+        if (tX > oX || ((tX == oX) && (tY > oY))) {
             return 1;
-        } else if (tY < oY || ((tY == oY) && (tX < oX))) {
+        } else if (tX < oX || ((tX == oX) && (tY < oY))) {
             return -1;
         } else {
             return 0;

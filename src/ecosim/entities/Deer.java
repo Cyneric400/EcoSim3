@@ -19,7 +19,7 @@ public class Deer extends Animal {
         if (this.age > oldAge) {
             this.die();
         }
-        this.move();
+        //this.move();
     }
 
     @Override

@@ -4,6 +4,7 @@ import ecosim.entities.Animal;
 import ecosim.entities.Entity;
 import ecosim.entities.Grass;
 import ecosim.entities.NullEntity;
+import utils.Point;
 
 import java.util.ArrayList;
 
@@ -16,19 +17,30 @@ public class Ecosystem {
         this.size = size;
         this.entities = new ArrayList<>();
         starterEntities = sortEntities(starterEntities);
+        for (var ent : starterEntities) {
+            System.out.println(ent.getCoords());
+        }
         // which entities have already been added
         int entCount = 0;
         for (int i = 0; i < size; i++) {
             for (int j = 0; j < size; j++) {
-                if ((starterEntities.get(entCount).getCoords().getX() == i) && (starterEntities.get(entCount).getCoords().getY() == j)) {
-                    this.entities.add(starterEntities.get(entCount));
-                } else {
-                    System.out.println("success");
-                    this.entities.add(new NullEntity(i, j));
+                System.out.print(i);
+                System.out.print(j);
+                try {
+                    System.out.println((starterEntities.get(entCount).getCoords().equals(new Point(i, j))));
+
+                    if (starterEntities.get(entCount).getCoords().equals(new Point(i, j))) {
+                        this.entities.add(starterEntities.get(entCount));
+                        entCount++;
+                    } else {
+                        this.entities.add(new NullEntity(i, j));
+                    }
+                } catch (IndexOutOfBoundsException e) {
+                    entCount = 0;
+                    break;
                 }
             }
         }
-        this.entities = starterEntities;
         this.year = 0;
     }
 
@@ -44,9 +56,6 @@ public class Ecosystem {
         for (Entity ent : this.entities) {
             mapToPrint += ent;
             counter++;
-            if (ent instanceof NullEntity) {
-                System.out.println("found a null");
-            }
             if (counter >= this.size) {
                 mapToPrint += "\n";
                 counter = 0;

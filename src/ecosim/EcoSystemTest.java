@@ -12,14 +12,14 @@ public class EcoSystemTest {
         entities.add(new Deer(0,0));
         entities.add(new Deer(2,2));
         entities.add(new Deer(1,4));
-        Ecosystem ecosys = new Ecosystem(4, entities);
+        Ecosystem ecosys = new Ecosystem(6, entities);
         ecosys.printMap();
         ecosys.year();
         ecosys.year();
         //ecosys.printMap();
         ecosys.year();
         ecosys.year();
-        //ecosys.printMap();
+        ecosys.printMap();
     }
 }
 
