@@ -5,6 +5,7 @@ public class Deer extends Animal {
 
     // Should this be an abstract thing?
     //private String foodSource = "Grass";
+    private int oldAge = 3;
 
     public Deer(int x, int y) {
         super(x, y);
@@ -15,6 +16,9 @@ public class Deer extends Animal {
         super.age++;
         // Code for moving
         // Code for dying
+        if (this.age > oldAge) {
+            this.die();
+        }
         this.move();
     }
 
@@ -38,12 +42,8 @@ public class Deer extends Animal {
 
     @Override
     public void move() {
-        // Hmmm how to do this
-        Point[] nearSquares = {};
         //TODO: Expand
         Direction moveDirection = Direction.EAST;
-        if (moveDirection == Direction.EAST) {
-            this.coords = this.coords.moveEast();
-        }
+        this.coords = this.coords.move(moveDirection);
     }
 }

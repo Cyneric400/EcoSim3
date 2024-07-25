@@ -10,8 +10,16 @@ public class EcoSystemTest {
         ArrayList<Entity> entities = new ArrayList<Entity>();
         System.out.println(entities.add(new Deer(4,3)));
         entities.add(new Deer(0,0));
-        Ecosystem ecosys = new Ecosystem(1, entities);
+        entities.add(new Deer(2,2));
+        entities.add(new Deer(1,4));
+        Ecosystem ecosys = new Ecosystem(4, entities);
         ecosys.printMap();
+        ecosys.year();
+        ecosys.year();
+        //ecosys.printMap();
+        ecosys.year();
+        ecosys.year();
+        //ecosys.printMap();
     }
 }
 

@@ -1,5 +1,7 @@
 package utils;
 
+import java.util.HashMap;
+
 public class Point {
     // Swap these around
     private int xpos;
@@ -48,8 +50,17 @@ public class Point {
         return String.format("%d, %d", this.xpos, this.ypos);
     }
 
-    public Point moveEast() {
-        return new Point(this.xpos, this.ypos+1);
+    public Point move(Direction dir) {
+        if (dir == Direction.EAST) {
+            return new Point(this.xpos, this.ypos+1);
+        } else if (dir == Direction.WEST) {
+            return new Point(this.xpos, this.ypos - 1);
+        } else if (dir == Direction.NORTH) {
+            return new Point(this.xpos-1, this.ypos);
+        } else if (dir == Direction.SOUTH) {
+            return new Point(this.xpos+1, this.ypos);
+        }
+        return new Point(this.xpos, this.ypos);
     }
 
     public int getX() {
