@@ -15,6 +15,21 @@ public class Point {
         this.ypos = y;
     }
 
+    // TODO: NOT TESTED
+    public int isGreaterY(Point op) {
+        int tX = this.getX();
+        int tY = this.getY();
+        int oX = op.getX();
+        int oY = op.getY();
+        if (tY > oY || ((tY == oY) && (tX > oX))) {
+            return 1;
+        } else if (tY < oY || ((tY == oY) && (tX < oX))) {
+            return -1;
+        } else {
+            return 0;
+        }
+    }
+
     // https://www.geeksforgeeks.org/overriding-equals-method-in-java/
     @Override
     public boolean equals(Object o) {
