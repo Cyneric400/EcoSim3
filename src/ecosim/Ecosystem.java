@@ -13,7 +13,7 @@ public class Ecosystem {
     public int year;
     public ArrayList<Entity> entities;
 
-    public Ecosystem(int size, ArrayList<Entity> starterEntities) {
+    public Ecosystem(int size, ArrayList<Entity> starterEntities) throws IllegalStateException {
         this.size = size;
         this.entities = new ArrayList<>();
         starterEntities = sortEntities(starterEntities);
@@ -24,24 +24,28 @@ public class Ecosystem {
         int entCount = 0;
         for (int i = 0; i < size; i++) {
             for (int j = 0; j < size; j++) {
-                System.out.print(i);
-                System.out.print(j);
-                try {
-                    System.out.println((starterEntities.get(entCount).getCoords().equals(new Point(i, j))));
-
+                // System.out.print(i);
+                //System.out.print(j);
+                if (entCount < starterEntities.size()) {
+                    // System.out.println((starterEntities.get(entCount).getCoords().equals(new Point(i, j))));
                     if (starterEntities.get(entCount).getCoords().equals(new Point(i, j))) {
                         this.entities.add(starterEntities.get(entCount));
                         entCount++;
                     } else {
                         this.entities.add(new NullEntity(i, j));
                     }
-                } catch (IndexOutOfBoundsException e) {
-                    entCount = 0;
-                    break;
+                } else {
+                    this.entities.add(new NullEntity(i, j));
                 }
             }
         }
         this.year = 0;
+        if (this.entities.size() != (this.size*this.size)) {
+            System.out.print(this.size*this.size);
+            System.out.print(" does not equal ");
+            System.out.print(this.entities.size());
+            throw new IllegalStateException();
+        }
     }
 
     private static ArrayList<Entity> sortEntities(ArrayList<Entity> ents) {
