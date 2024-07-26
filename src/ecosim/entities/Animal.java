@@ -1,5 +1,7 @@
 package ecosim.entities;
 
+import utils.Direction;
+
 public abstract class Animal extends Entity {
     protected int age;
     protected int energy;

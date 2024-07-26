@@ -19,7 +19,7 @@ public class Deer extends Animal {
         if (this.age > oldAge) {
             this.die();
         }
-        //this.move();
+        this.move();
     }
 
     @Override
@@ -44,6 +44,7 @@ public class Deer extends Animal {
     public void move() {
         //TODO: Expand
         Direction moveDirection = Direction.EAST;
+        // super.checkMove(moveDirection);
         this.coords = this.coords.move(moveDirection);
     }
 }
