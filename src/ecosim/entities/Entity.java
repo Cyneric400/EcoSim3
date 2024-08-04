@@ -1,4 +1,5 @@
 package ecosim.entities;
+import ecosim.Ecosystem;
 import utils.Direction;
 import utils.Point;
 import utils.SquareState;
@@ -19,9 +20,11 @@ public abstract class Entity {
     /* TODO: What if this is a HashMap of points to SquareStates like in SightSystem? Agh I need more data in these structures
     I need to have this so that it knows what square number it is, what direction it's in, and what's in that direction.
     So in other words...it has */
+    protected Ecosystem ecosystem;
+
     protected HashMap<Direction, ArrayList<SquareState>> mentalMap;
 
-    public Entity(int x, int y) {
+    public Entity(int x, int y, Ecosystem es) {
         this.living = true;
         // Entities have to have a set of coordinates, even if they don't exist on the map yet.
         this.coords = new Point(x, y);
@@ -36,6 +39,7 @@ public abstract class Entity {
                 mentalMap.get(dir).add(SquareState.EMPTY);
             }
         }
+        this.ecosystem = es;
     }
 
     /***

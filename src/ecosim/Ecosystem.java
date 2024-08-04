@@ -6,6 +6,7 @@ import ecosim.entities.Grass;
 import ecosim.entities.NullEntity;
 import utils.Point;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class Ecosystem {
@@ -14,9 +15,7 @@ public class Ecosystem {
     public ArrayList<Entity> entities;
     private SightSystem sightsys;
 
-    public Ecosystem(int size, ArrayList<Entity> starterEntities) throws IllegalStateException {
-        this.size = size;
-        this.entities = new ArrayList<>();
+    public void addEntities(ArrayList<Entity> starterEntities) {
         starterEntities = sortEntities(starterEntities);
         for (var ent : starterEntities) {
             System.out.println(ent.getCoords());
@@ -33,10 +32,10 @@ public class Ecosystem {
                         this.entities.add(starterEntities.get(entCount));
                         entCount++;
                     } else {
-                        this.entities.add(new NullEntity(i, j));
+                        this.entities.add(new NullEntity(i, j, this));
                     }
                 } else {
-                    this.entities.add(new NullEntity(i, j));
+                    this.entities.add(new NullEntity(i, j, this));
                 }
             }
         }
@@ -48,11 +47,17 @@ public class Ecosystem {
             throw new IllegalStateException();
         }
 
+
         this.sightsys = new SightSystem();
         sightsys.startWatching(0,0, entities.get(1));
         sightsys.startWatching(1,1, entities.get(2));
         sightsys.startWatching(0,0, entities.get(2));
         sightsys.displayWatchers();
+    }
+
+    public Ecosystem(int size) throws IllegalStateException {
+        this.size = size;
+        this.entities = new ArrayList<>();
     }
 
     private static ArrayList<Entity> sortEntities(ArrayList<Entity> ents) {
@@ -81,22 +86,22 @@ public class Ecosystem {
             if (entities.get(i) instanceof Animal) {
                 entities.get(i).live();
                 if (!entities.get(i).isAlive()) {
-                    entities.set(i, new Grass(entities.get(i).getCoords().getX(), entities.get(i).getCoords().getY()));
+                    entities.set(i, new Grass(entities.get(i).getCoords().getX(), entities.get(i).getCoords().getY(), this));
                 }
             }
         }
         // Set up the system for tracking if entities have moved positions and if so interfacing
         // with the observer system
-        // TODO: Change to javadoc
-        this.entities = sortEntities(this.entities);
-        for (Entity e : this.entities) {
-            // sightsys.update(e.getCoords().convInt(), )
-        }
-        boolean entsMoved = false;
-        if (entsMoved) {
-            sightsys.update();
-        }
-        Point[] spacesChanged = // spaces changed
+//        // TODO: Change to javadoc
+//        this.entities = sortEntities(this.entities);
+//        for (Entity e : this.entities) {
+//            // sightsys.update(e.getCoords().convInt(), )
+//        }
+//        boolean entsMoved = false;
+//        if (entsMoved) {
+//            sightsys.update();
+//        }
+//        Point[] spacesChanged = // spaces changed
 
     }
 }

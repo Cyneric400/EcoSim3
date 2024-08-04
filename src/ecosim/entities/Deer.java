@@ -1,4 +1,5 @@
 package ecosim.entities;
+import ecosim.Ecosystem;
 import utils.*;
 
 public class Deer extends Animal {
@@ -7,8 +8,8 @@ public class Deer extends Animal {
     //private String foodSource = "Grass";
     private int oldAge = 3;
 
-    public Deer(int x, int y) {
-        super(x, y);
+    public Deer(int x, int y, Ecosystem es) {
+        super(x, y, es);
     }
 
     @Override

@@ -1,10 +1,12 @@
 package ecosim.entities;
 
+import ecosim.Ecosystem;
+
 public class Grass extends Plant {
     boolean canWalkOver = true;
 
-    public Grass(int x, int y) {
-        super(x, y);
+    public Grass(int x, int y, Ecosystem es) {
+        super(x, y, es);
     }
 
     @Override

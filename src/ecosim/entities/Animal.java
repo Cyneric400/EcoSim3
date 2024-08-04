@@ -1,13 +1,13 @@
 package ecosim.entities;
 
-import utils.Direction;
+import ecosim.Ecosystem;
 
 public abstract class Animal extends Entity {
     protected int age;
     protected int energy;
 
-    public Animal(int x, int y) {
-        super(x, y);
+    public Animal(int x, int y, Ecosystem es) {
+        super(x, y, es);
         this.age = 0;
     }
 

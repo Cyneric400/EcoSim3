@@ -8,11 +8,11 @@ import java.util.ArrayList;
 public class EcoSystemTest {
     public static void main(String[] args) {
         ArrayList<Entity> entities = new ArrayList<Entity>();
-        System.out.println(entities.add(new Deer(4,3)));
-        entities.add(new Deer(0,0));
-        entities.add(new Deer(2,2));
-        entities.add(new Deer(1,4));
-        Ecosystem ecosys = new Ecosystem(10, entities);
+        Ecosystem ecosys = new Ecosystem(10);
+        System.out.println(entities.add(new Deer(4,3, ecosys)));
+        entities.add(new Deer(0,0, ecosys));
+        entities.add(new Deer(2,2, ecosys));
+        entities.add(new Deer(1,4, ecosys));
         ecosys.printMap();
         ecosys.year();
         ecosys.year();

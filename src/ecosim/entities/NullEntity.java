@@ -1,8 +1,9 @@
 package ecosim.entities;
+import ecosim.Ecosystem;
 
 public class NullEntity extends Entity {
-    public NullEntity(int x, int y) {
-        super(x, y);
+    public NullEntity(int x, int y, Ecosystem es) {
+        super(x, y, es);
     }
 
     @Override
