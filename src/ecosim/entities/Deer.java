@@ -36,11 +36,6 @@ public class Deer extends Animal {
         this.living = false;
     }
 
-
-	/*private Sight lookAt(Point p) {
-		return Sight.NOTHING;
-	}*/
-
     @Override
     public void move() {
         //TODO: Expand

@@ -16,6 +16,11 @@ public class NullEntity extends Entity {
         return;
     }
 
+//    @Override
+//    public void lookAround() {
+//        return;
+//    }
+
     @Override
     public String toString() {
         return String.format("%6s%3s", "-", "-");

@@ -71,5 +71,4 @@ public class Point {
         return this.ypos;
     }
 
-
 }

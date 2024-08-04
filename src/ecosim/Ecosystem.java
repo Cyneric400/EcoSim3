@@ -6,7 +6,6 @@ import ecosim.entities.Grass;
 import ecosim.entities.NullEntity;
 import utils.Point;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class Ecosystem {
