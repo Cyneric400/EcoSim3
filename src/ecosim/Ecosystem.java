@@ -12,6 +12,7 @@ public class Ecosystem {
     public int size;
     public int year;
     public ArrayList<Entity> entities;
+    private SightSystem sightsys;
 
     public Ecosystem(int size, ArrayList<Entity> starterEntities) throws IllegalStateException {
         this.size = size;
@@ -46,6 +47,12 @@ public class Ecosystem {
             System.out.print(this.entities.size());
             throw new IllegalStateException();
         }
+
+        this.sightsys = new SightSystem();
+        sightsys.startWatching(0,0, entities.get(1));
+        sightsys.startWatching(1,1, entities.get(2));
+        sightsys.startWatching(0,0, entities.get(2));
+        sightsys.displayWatchers();
     }
 
     private static ArrayList<Entity> sortEntities(ArrayList<Entity> ents) {
@@ -78,6 +85,18 @@ public class Ecosystem {
                 }
             }
         }
+        // Set up the system for tracking if entities have moved positions and if so interfacing
+        // with the observer system
+        // TODO: Change to javadoc
+        this.entities = sortEntities(this.entities);
+        for (Entity e : this.entities) {
+            // sightsys.update(e.getCoords().convInt(), )
+        }
+        boolean entsMoved = false;
+        if (entsMoved) {
+            sightsys.update();
+        }
+        Point[] spacesChanged = // spaces changed
 
     }
 }
