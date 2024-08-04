@@ -13,6 +13,7 @@ public class EcoSystemTest {
         entities.add(new Deer(0,0, ecosys));
         entities.add(new Deer(2,2, ecosys));
         entities.add(new Deer(1,4, ecosys));
+        ecosys.addEntities(entities);
         ecosys.printMap();
         ecosys.year();
         ecosys.year();
