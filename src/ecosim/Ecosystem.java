@@ -79,6 +79,20 @@ public class Ecosystem {
         System.out.println(mapToPrint);
     }
 
+    // TODO: Add Javadoc with the possibility of returning null
+    public Entity findEntityByCoords(Point coords) {
+        // TODO: Make this binary search later
+        for (Entity ent : entities) {
+            if (ent.getCoords().equals(coords)) {
+                return ent;
+            }
+        }
+        // If none found, which is a problem
+        NullEntity addedEnt = new NullEntity(coords.getX(), coords.getY(), this);
+        this.entities.add(addedEnt);
+        return addedEnt;
+    }
+
     public void year() {
         this.year++;
         for (int i = 0; i < entities.size(); i++) {

@@ -3,7 +3,7 @@ package utils;
 import ecosim.entities.Entity;
 
 public class RecognitionData {
-    public SquareState entitySees(Entity e) {
+    public static SquareState entitySees(Entity e) {
         String name = e.getClass().getSimpleName();
         String parentName = e.getClass().getSuperclass().getSimpleName();
         if (parentName.equals("Animal")) {

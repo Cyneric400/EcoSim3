@@ -26,7 +26,7 @@ public abstract class Entity {
     protected Ecosystem ecosystem;
 
     //protected HashMap<Direction, HashMap<String, SquareState>> mentalMap;
-    protected HashMap<Direction, ArrayList<SquareState>> mentalMap;
+    protected HashMap<Direction, SquareState> mentalMap;
 
     private void entitySetup(int x, int y, Ecosystem es) {
         this.living = true;
@@ -40,31 +40,30 @@ public abstract class Entity {
         this.age = 0;
     }
 
+    private void initMap() {
+        mentalMap = new HashMap<>();
+        for (Direction dir : Direction.values()) {
+            /* mentalMap.put(dir, new ArrayList<>());
+            for (int i = 0; i < sightRadius; i++) {
+                mentalMap.get(dir).add(SquareState.EMPTY);
+            } */
+            mentalMap.put(dir, SquareState.EMPTY);
+        }
+    }
+
     public Entity(int x, int y, Ecosystem es) {
         entitySetup(x, y, es);
         // Set the static variable as none was passed in the constructor
         sightRadius = 1;
         // Build a mental map of the surroundings, defaulting to empty squares.
-        mentalMap = new HashMap<>();
-        for (Direction dir : Direction.values()) {
-            mentalMap.put(dir, new ArrayList<>());
-            for (int i = 0; i < sightRadius; i++) {
-                mentalMap.get(dir).add(SquareState.EMPTY);
-            }
-        }
+        initMap();
     }
 
     public Entity(int x, int y, Ecosystem es, int sR) {
         entitySetup(x, y, es);
         sightRadius = sR;
         // Build a mental map of the surroundings, defaulting to empty squares.
-        mentalMap = new HashMap<>();
-        for (Direction dir : Direction.values()) {
-            mentalMap.put(dir, new ArrayList<>());
-            for (int i = 0; i < sightRadius; i++) {
-                mentalMap.get(dir).add(SquareState.EMPTY);
-            }
-        }
+        initMap();
     }
 
     /***
@@ -88,7 +87,7 @@ public abstract class Entity {
 
     public void lookAround() {
         for (var d : Direction.values()) {
-            // RecognitionData.entitySees(ecosystemthis.getCoords().move(d);
+            mentalMap.replace(d, RecognitionData.entitySees(ecosystem.findEntityByCoords(this.getCoords().move(d))));
         }
     };
 
@@ -98,7 +97,7 @@ public abstract class Entity {
 
     public int getId() { return this.id; }
 
-//    public void updateSight(int square, SquareState newState) {
-//
-//    }
+    public void updateSight(int square, SquareState newState) {
+        return;
+    }
 }
