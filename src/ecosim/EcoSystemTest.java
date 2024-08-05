@@ -1,5 +1,6 @@
 package ecosim;
 
+import ecosim.entities.Cougar;
 import ecosim.entities.Entity;
 import ecosim.entities.Deer;
 
@@ -13,6 +14,7 @@ public class EcoSystemTest {
         entities.add(new Deer(0,0, ecosys));
         entities.add(new Deer(2,2, ecosys));
         entities.add(new Deer(1,4, ecosys));
+        entities.add(new Cougar(2, 3, ecosys));
         ecosys.addEntities(entities);
         ecosys.printMap();
         ecosys.year();

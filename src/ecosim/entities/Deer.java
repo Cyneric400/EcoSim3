@@ -39,8 +39,27 @@ public class Deer extends Animal {
     @Override
     public void move() {
         //TODO: Expand
-        Direction moveDirection = Direction.EAST;
-        // super.checkMove(moveDirection);
+        lookAround();
+        Direction moveDirection = null;
+        for (Direction d : Direction.values()) {
+            System.out.println(mentalMap.get(d));
+            if (mentalMap.get(d) == SquareState.DANGER) {
+                moveDirection = DirectionUtils.getOppositeDir(d);
+                System.out.print("Danger detected to the ");
+                System.out.print(d);
+            }
+        }
+        if (moveDirection == null) {
+            moveDirection = Direction.EAST;
+        }
+            // super.checkMove(moveDirection);
         this.coords = this.coords.move(moveDirection);
+    }
+
+    @Override
+    public void lookAround() {
+        for (var d : Direction.values()) {
+            mentalMap.replace(d, RecognitionData.deerSees(ecosystem.findEntityByCoords(this.getCoords().move(d))));
+        }
     }
 }
