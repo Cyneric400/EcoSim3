@@ -47,13 +47,21 @@ public class Deer extends Animal {
                 moveDirection = DirectionUtils.getOppositeDir(d);
                 System.out.print("Danger detected to the ");
                 System.out.print(d);
+                System.out.println(moveDirection);
             }
         }
         if (moveDirection == null) {
             moveDirection = Direction.EAST;
         }
             // super.checkMove(moveDirection);
+        if (this.id == 2) {
+            System.out.println(this.coords);
+        }
         this.coords = this.coords.move(moveDirection);
+        if (this.id == 2) {
+            System.out.println(moveDirection);
+            System.out.println(this.coords);
+        }
     }
 
     @Override

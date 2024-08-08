@@ -18,10 +18,10 @@ public class EcoSystemTest {
         ecosys.addEntities(entities);
         ecosys.printMap();
         ecosys.year();
-        ecosys.year();
-        ecosys.printMap();
-        ecosys.year();
-        ecosys.year();
+//        ecosys.year();
+//        ecosys.printMap();
+//        ecosys.year();
+//        ecosys.year();
         ecosys.printMap();
     }
 }

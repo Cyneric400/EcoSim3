@@ -7,6 +7,7 @@ import ecosim.entities.NullEntity;
 import utils.Point;
 
 import java.util.ArrayList;
+import java.io.IOException;
 
 public class Ecosystem {
     public int size;
@@ -16,9 +17,6 @@ public class Ecosystem {
 
     public void addEntities(ArrayList<Entity> starterEntities) {
         starterEntities = sortEntities(starterEntities);
-        for (var ent : starterEntities) {
-            System.out.println(ent.getCoords());
-        }
         // which entities have already been added
         int entCount = 0;
         for (int i = 0; i < size; i++) {
@@ -55,6 +53,8 @@ public class Ecosystem {
     }
 
     public Ecosystem(int size) throws IllegalStateException {
+        moveCursor(1000, 1000);
+        System.out.println("hehehehe");
         this.size = size;
         this.entities = new ArrayList<>();
     }
@@ -64,7 +64,22 @@ public class Ecosystem {
         return ents;
     }
 
+    private static void clearScreen() {
+        System.out.print("\u001B[32m" + "Hello, world" + "\u001B[0m");
+    }
+
+    private static void moveCursor(int x, int y) {
+        // System.out.printf("\u001B[%d;%dH", x, y);
+        String esc = "\033[" + (x + 1) + ";" + (y + 1) + "H hhhiiii\n\n\nhiii";
+        System.out.print(esc);
+        // System.out.setCursorPosition(x, y);
+    }
+
+
     public void printMap() {
+        clearScreen();
+        moveCursor(20, 20);
+        System.out.print("\u001B[34m" + "Hiiii" + "\u001B[0m");
         String mapToPrint = "";
         this.entities = sortEntities(this.entities);
         int counter = 0;
@@ -91,6 +106,7 @@ public class Ecosystem {
         NullEntity addedEnt = new NullEntity(coords.getX(), coords.getY(), this);
         this.entities.add(addedEnt);
         return addedEnt;
+        // return null;
     }
 
     public void year() {
